@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NUTRITON</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_PlanComidas">PlanComidas</string>
+    <string name="title_Progreso">Progreso</string>
+    <string name="title_Perfil">Perfil</string>
+</resources>
