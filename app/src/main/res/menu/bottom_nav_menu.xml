@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Inicio" />
+
+    <item
+        android:id="@+id/navigation_PlanComidas"
+        android:icon="@drawable/ic_plan_comidas_black_24dp"
+        android:title="Plan de Comidas" />
+
+    <item
+        android:id="@+id/navigation_Progreso"
+        android:icon="@drawable/ic_progreso_black_24dp"
+        android:title="Progreso" />
+
+    <item
+        android:id="@+id/navigation_Perfil"
+        android:icon="@drawable/ic_progreso_black_24dp"
+        android:title="Perfil" />
+
+</menu>

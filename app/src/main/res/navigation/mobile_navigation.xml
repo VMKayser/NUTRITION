@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.nutriton.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_PlanComidas"
+        android:name="com.example.nutriton.ui.PlanComidas.PlanComidasFragment"
+        android:label="@string/title_PlanComidas"
+        tools:layout="@layout/fragment_plancomidas" />
+
+    <fragment
+        android:id="@+id/navigation_Progreso"
+        android:name="com.example.nutriton.ui.Progreso.ProgresoFragment"
+        android:label="@string/title_Progreso"
+        tools:layout="@layout/fragment_progreso" />
+
+    <fragment
+        android:id="@+id/navigation_Perfil"
+        android:name="com.example.nutriton.ui.Perfil.PerfilFragment"
+        android:label="@string/title_Perfil"
+        tools:layout="@layout/fragment_perfil" />
+</navigation>
