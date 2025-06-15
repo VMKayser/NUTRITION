@@ -12,14 +12,20 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.nutriton.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_PlanComidas"
+        android:name="com.example.nutriton.ui.PlanComidas.PlanComidasFragment"
+        android:label="@string/title_PlanComidas"
+        tools:layout="@layout/fragment_plancomidas" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.nutriton.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_Progreso"
+        android:name="com.example.nutriton.ui.Progreso.ProgresoFragment"
+        android:label="@string/title_Progreso"
+        tools:layout="@layout/fragment_progreso" />
+
+    <fragment
+        android:id="@+id/navigation_Perfil"
+        android:name="com.example.nutriton.ui.Perfil.PerfilFragment"
+        android:label="@string/title_Perfil"
+        tools:layout="@layout/fragment_perfil" />
 </navigation>
