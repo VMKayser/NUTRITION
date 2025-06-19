@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nivel de Actividad"
+            android:text="@string/nivel_actividad_titulo"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -28,11 +26,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Selecciona tu nivel de actividad física habitual. Esto nos ayudará a calcular las necesidades calóricas diarias que necesitas."
+            android:text="@string/nivel_actividad_descripcion"
             android:textSize="14sp"
             android:textColor="#888888"
             android:lineSpacingExtra="4dp"
-            android:layout_marginBottom="40dp" />
+            android:layout_marginBottom="30dp" />
 
         <!-- OPCIÓN SEDENTARIO -->
         <LinearLayout
@@ -41,14 +39,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/nivel_actividad_normal"
-            android:padding="20dp"
-            android:layout_marginBottom="20dp"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
             android:clickable="true"
-            android:focusable="true">            <TextView
+            android:focusable="true">
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sedentario"
-                android:textSize="18sp"
+                android:text="@string/nivel_sedentario"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
                 android:layout_marginBottom="8dp" />
@@ -56,27 +56,29 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/descripcion_sedentario"
+                android:text="@string/desc_sedentario"
                 android:textSize="14sp"
                 android:textColor="#888888" />
 
         </LinearLayout>
 
-        <!-- OPCIÓN MODERADO (SELECCIONADO POR DEFECTO) -->
+        <!-- OPCIÓN MODERADO -->
         <LinearLayout
             android:id="@+id/layout_moderado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/nivel_actividad_seleccionado"
-            android:padding="20dp"
-            android:layout_marginBottom="20dp"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
             android:clickable="true"
-            android:focusable="true">            <TextView
+            android:focusable="true">
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Moderado"
-                android:textSize="18sp"
+                android:text="@string/nivel_moderado"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
                 android:layout_marginBottom="8dp" />
@@ -84,7 +86,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/descripcion_moderado"
+                android:text="@string/desc_moderado"
                 android:textSize="14sp"
                 android:textColor="#888888" />
 
@@ -97,14 +99,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/nivel_actividad_normal"
-            android:padding="20dp"
-            android:layout_marginBottom="20dp"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
             android:clickable="true"
-            android:focusable="true">            <TextView
+            android:focusable="true">
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Activo"
-                android:textSize="18sp"
+                android:text="@string/nivel_activo"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
                 android:layout_marginBottom="8dp" />
@@ -112,7 +116,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/descripcion_activo"
+                android:text="@string/desc_activo"
                 android:textSize="14sp"
                 android:textColor="#888888" />
 
@@ -125,14 +129,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/nivel_actividad_normal"
-            android:padding="20dp"
+            android:padding="16dp"
             android:layout_marginBottom="40dp"
             android:clickable="true"
-            android:focusable="true">            <TextView
+            android:focusable="true">
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Muy Activo"
-                android:textSize="18sp"
+                android:text="@string/nivel_muy_activo"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
                 android:layout_marginBottom="8dp" />
@@ -140,18 +146,18 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/descripcion_muy_activo"
+                android:text="@string/desc_muy_activo"
                 android:textSize="14sp"
                 android:textColor="#888888" />
 
         </LinearLayout>
 
-        <!-- BOTÓN GUARDAR NIVEL -->
+        <!-- BOTÓN GUARDAR -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_guardar_nivel"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="Guardar Nivel"
+            android:text="@string/guardar_nivel"
             android:textSize="15sp"
             android:textColor="#FFFFFF"
             android:textStyle="bold"

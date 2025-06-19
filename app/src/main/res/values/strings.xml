@@ -1,7 +1,68 @@
 <resources>
     <string name="app_name">NUTRITON</string>
-    <string name="title_home">Inicio</string>
+    <string name="title_inicio">Inicio</string>
     <string name="title_PlanComidas">PlanComidas</string>
     <string name="title_Progreso">Progreso</string>
     <string name="title_Perfil">Perfil</string>
+    
+    <!-- Gestión de Metas -->
+    <string name="gestion_metas_titulo">Gestión de Metas</string>
+    <string name="gestion_metas_descripcion">Establece y sigue tus metas de salud y visualiza tu progreso</string>
+    <string name="objetivo_actual_ganar_masa">Objetivo Actual: Ganar Masa Muscular</string>
+    <string name="peso_objetivo_info">Peso objetivo: 65kg (Actual: 70kg)</string>
+    <string name="porcentaje_completado">60% completado</string>
+    <string name="editar_objetivo">Editar Objetivo</string>
+    <string name="hitos_del_objetivo">Hitos del objetivo:</string>
+    <string name="hito_bajar_5_kilos">Bajar los primeros 5 kilos</string>
+    <string name="hito_mantener_peso">Mantener el peso por una semana</string>
+    <string name="hito_racha_7_dias">Alcanzar Racha de 7 días</string>    <string name="agregar_nuevo_objetivo">Agregar Nuevo Objetivo</string>
+    
+    <!-- Nivel de Actividad -->
+    <string name="nivel_actividad_titulo">Nivel de Actividad</string>
+    <string name="nivel_actividad_descripcion">Selecciona tu nivel de actividad física habitual. Esto nos ayudará a calcular las necesidades calóricas diarias que necesitas.</string>
+    <string name="nivel_sedentario">Sedentario</string>
+    <string name="nivel_moderado">Moderado</string>
+    <string name="nivel_activo">Activo</string>
+    <string name="nivel_muy_activo">Muy Activo</string>
+    <string name="descripcion_sedentario">Poco o ningún ejercicio, trabajo en escritorio</string>
+    <string name="descripcion_moderado">Ejercicio ligero 1-3 días por semana</string>
+    <string name="descripcion_activo">Ejercicio moderado 3-5 días por semana</string>
+    <string name="descripcion_muy_activo">Ejercicio intenso 6-7 días por semana</string>
+    <string name="guardar_nivel">Guardar Nivel</string>
+      <!-- Preferencias de Nutrición -->
+    <string name="preferencias_nutricion_titulo">Preferencias de nutrición</string>
+    <string name="preferencias_nutricion_descripcion">Personaliza tu plan de nutrición. Indica tus restricciones, alergias y alimentos favoritos para que ajustemos las sugerencias.</string>
+    <string name="plan_de_dieta">Plan de Dieta</string>
+    <string name="objetivo_macronutrientes">Objetivo de Macronutrientes</string>
+    <string name="proteinas_porcentaje">Proteínas (%)</string>
+    <string name="carbohidratos_porcentaje">Carbohidratos (%)</string>
+    <string name="grasas_porcentaje">Grasas (%)</string>
+    <string name="alergias">Alergias</string>
+    <string name="alimentos_favoritos">Alimentos favoritos</string>
+    <string name="hint_porcentaje">%</string>
+    <string name="hint_alergias">Indica tus alergias alimentarias</string>
+    <string name="hint_alimentos_favoritos">Comparte tus alimentos favoritos</string>
+    <string name="btn_guardar_preferencias">Guardar Preferencias</string>
+    
+    <!-- Strings para Perfil -->
+    <string name="hint_nombre_usuario">Ingresa tu nombre</string>
+    <string name="hint_email_usuario">Cargando email...</string>
+    <string name="hint_peso">Peso (kg)</string>
+    <string name="hint_estatura">Estatura (cm)</string>
+    <string name="hint_edad">Edad (años)</string>
+    
+    <!-- Strings para Gestión de Metas -->
+    <string name="hint_objetivo_actual">Objetivo actual sin definir</string>
+    <string name="hint_peso_objetivo">Peso objetivo sin definir</string>
+    <string name="hint_porcentaje_completado">0% completado</string>
+    <string name="hint_hito_1">Hito 1: Cargando...</string>
+    <string name="hint_hito_2">Hito 2: Cargando...</string>
+    <string name="hint_hito_3">Hito 3: Cargando...</string>
+    
+    <!-- Strings para Nivel de Actividad -->
+    <string name="desc_sedentario">Poco o ningún ejercicio</string>
+    <string name="desc_moderado">Ejercicio ligero 1-3 días por semana</string>
+    <string name="desc_activo">Ejercicio moderado 3-5 días por semana</string>
+    <string name="desc_muy_activo">Ejercicio intenso 6-7 días por semana</string>
+    
 </resources>

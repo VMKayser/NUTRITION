@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_inicio">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.nutriton.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_inicio"
+        android:name="com.example.nutriton.ui.inicio.InicioFragment"
+        android:label="@string/title_inicio"
+        tools:layout="@layout/fragment_inicio" />
 
     <fragment
         android:id="@+id/navigation_PlanComidas"
@@ -21,11 +21,43 @@
         android:id="@+id/navigation_Progreso"
         android:name="com.example.nutriton.ui.Progreso.ProgresoFragment"
         android:label="@string/title_Progreso"
-        tools:layout="@layout/fragment_progreso" />
-
+        tools:layout="@layout/fragment_progreso" />  
+        
     <fragment
         android:id="@+id/navigation_Perfil"
         android:name="com.example.nutriton.ui.Perfil.PerfilFragment"
         android:label="@string/title_Perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil">
+        
+        <!-- Acciones de navegación desde Perfil -->
+        <action
+            android:id="@+id/action_perfil_to_gestionarMetas"
+            app:destination="@id/gestionarMetasFragment" />
+        <action
+            android:id="@+id/action_perfil_to_nivelActividad"
+            app:destination="@id/nivelActividadFragment" />
+        <action
+            android:id="@+id/action_perfil_to_preferenciasNutricion"
+            app:destination="@id/preferenciasNutricionFragment" />
+    </fragment>
+
+    <!-- Fragments destino desde Perfil -->
+    <fragment
+        android:id="@+id/gestionarMetasFragment"
+        android:name="com.example.nutriton.ui.Perfil.GestionarMetas.GestionarMetasFragment"
+        android:label="Gestión de Metas"
+        tools:layout="@layout/fragment_gestionarmetas" />
+        
+    <fragment
+        android:id="@+id/nivelActividadFragment"
+        android:name="com.example.nutriton.ui.Perfil.NivelActividad.NivelActividadFragment"
+        android:label="Nivel de Actividad"
+        tools:layout="@layout/fragment_nivelactividad" />
+        
+    <fragment
+        android:id="@+id/preferenciasNutricionFragment"
+        android:name="com.example.nutriton.ui.Perfil.PreferenciasNutricion.PreferenciasNutricionFragment"
+        android:label="Preferencias de Nutrición"
+        tools:layout="@layout/fragment_preferenciasnutricion" />
+
 </navigation>

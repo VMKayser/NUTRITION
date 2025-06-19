@@ -1,22 +1,377 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".ui.Perfil.PerfilFragment">
 
-    <TextView
-        android:id="@+id/text_Perfil"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- SECCIÓN USUARIO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="30dp">
+
+            <!-- Icono circular de usuario -->
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_dashboard_black_24dp"
+                android:background="@drawable/ic_launcher_background"
+                android:layout_marginEnd="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">                <!-- Nombre de usuario (EDITABLE) -->
+                <EditText
+                    android:id="@+id/et_nombre_usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_nombre_usuario"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:background="@android:color/transparent"
+                    android:inputType="text" />                <!-- Email (NO EDITABLE - solo visual) -->
+                <TextView
+                    android:id="@+id/tv_email_usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_email_usuario"
+                    android:textSize="14sp"
+                    android:textColor="#888888"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+        </LinearLayout>        <!-- CAMPOS EDITABLES CON LABELS -->
+        
+        <!-- Peso -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="15dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Peso:"
+                android:textSize="16sp"
+                android:textColor="#000000" />            <EditText
+                android:id="@+id/et_peso"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="@string/hint_peso"
+                android:textSize="16sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="@drawable/input_border"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <!-- Estatura -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="15dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Estatura:"
+                android:textSize="16sp"
+                android:textColor="#000000" />            <EditText
+                android:id="@+id/et_estatura"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="@string/hint_estatura"
+                android:textSize="16sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="@drawable/input_border"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <!-- Edad -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="15dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Edad:"
+                android:textSize="16sp"
+                android:textColor="#000000" />            <EditText
+                android:id="@+id/et_edad"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="@string/hint_edad"
+                android:textSize="16sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="@drawable/input_border"
+                android:inputType="number" />
+        </LinearLayout>        <!-- Género (Dropdown CON FLECHA) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="25dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Genero"
+                android:textSize="16sp"
+                android:textColor="#000000" />
+
+            <Spinner
+                android:id="@+id/spinner_genero"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/spinner_background"
+                android:paddingStart="12dp"
+                android:paddingEnd="35dp" />
+        </LinearLayout><!-- OPCIONES CON ICONOS (SIN FLECHAS) -->
+        
+        <!-- Gestionar Metas -->
+        <LinearLayout            android:id="@+id/layout_gestionar_metas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:background="@drawable/rounded_gray_background"
+            android:clickable="true"
+            android:layout_marginBottom="10dp">            <!-- Icono con fondo naranja -->
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="🏆"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:background="@drawable/circle_orange"
+                android:layout_marginEnd="15dp" /><TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"                android:text="Gestionar Metas"
+                android:textSize="16sp"
+                android:textColor="#000000" />            <!-- Flecha -->
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_arrow_right_black"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Preferencias de nutrición -->
+        <LinearLayout            android:id="@+id/layout_preferencias_nutricion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:background="@drawable/rounded_gray_background"
+            android:clickable="true"
+            android:layout_marginBottom="10dp">            <!-- Icono con fondo cyan -->
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="🍴"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:background="@drawable/circle_cyan"
+                android:layout_marginEnd="15dp" /><TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"                android:text="Preferencias de nutricion"
+                android:textSize="16sp"
+                android:textColor="#000000" />            <!-- Flecha -->
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_arrow_right_black"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Nivel de Actividad -->
+        <LinearLayout            android:id="@+id/layout_nivel_actividad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:background="@drawable/rounded_gray_background"
+            android:clickable="true"
+            android:layout_marginBottom="25dp">            <!-- Icono con fondo azul -->
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="🏃"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:background="@drawable/circle_blue"
+                android:layout_marginEnd="15dp" /><TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"                android:text="Nivel de Actividad"
+                android:textSize="16sp"
+                android:textColor="#000000" />            <!-- Flecha -->
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_arrow_right_black"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- NOTIFICACIONES -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notificaciones:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="15dp" />
+
+        <!-- Recordatorio de Agua -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="15dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Recordatorio de Agua"
+                android:textSize="15sp"
+                android:textColor="#000000" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_agua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                app:thumbTint="#FFFFFF"
+                app:trackTint="@color/switch_track_selector" />
+        </LinearLayout>
+
+        <!-- Recordatorio de Dieta -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="15dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Recordatorio de Dieta"
+                android:textSize="15sp"
+                android:textColor="#000000" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_dieta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                app:thumbTint="#FFFFFF"
+                app:trackTint="@color/switch_track_selector" />
+        </LinearLayout>
+
+        <!-- Recordatorio de Pesaje -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="15dp"
+            android:layout_marginBottom="25dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Recordatorio de Pesaje"
+                android:textSize="15sp"
+                android:textColor="#000000" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_pesaje"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                app:thumbTint="#FFFFFF"
+                app:trackTint="@color/switch_track_selector" />
+        </LinearLayout>
+
+        <!-- APARIENCIA -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apariencia:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="15dp" />
+
+        <!-- Modo Oscuro -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="15dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Modo Oscuro"
+                android:textSize="15sp"
+                android:textColor="#000000" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_modo_oscuro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                app:thumbTint="#FFFFFF"
+                app:trackTint="@color/switch_track_selector" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
