@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8F8F8"
+    tools:context=".ui.PlanComidas.RecetasPorPlanFragment">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp">
+
+        <ImageButton
+            android:id="@+id/btnVolver"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Volver"
+            android:layout_gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/tvTituloPlan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="Recetas del Plan"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_gravity="center_vertical" />
+
+        <ImageButton
+            android:id="@+id/btnRecargar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_refresh"
+            android:contentDescription="Recargar"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <!-- CONTENT CONTAINER -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- RECYCLER VIEW -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecetas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:clipToPadding="false"
+            tools:listitem="@layout/item_receta" />
+
+        <!-- LOADING -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <!-- EMPTY STATE -->
+        <LinearLayout
+            android:id="@+id/tvNoRecetas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_no_recipes"
+                android:alpha="0.5"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Sin recetas" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No hay recetas disponibles\npara este plan"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/btnReintentar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reintentar"
+                android:textAllCaps="false"
+                android:backgroundTint="#4CAF50" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

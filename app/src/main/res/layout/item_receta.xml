@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <!-- IMAGEN DE LA RECETA -->
+        <ImageView
+            android:id="@+id/ivImagenReceta"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="12dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Imagen de receta"
+            tools:src="@drawable/placeholder_receta" />
+
+        <!-- INFORMACIÓN DE LA RECETA -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- NOMBRE DE LA RECETA -->
+            <TextView
+                android:id="@+id/tvNombreReceta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Ensalada César con Pollo" />
+
+            <!-- DESCRIPCIÓN -->
+            <TextView
+                android:id="@+id/tvDescripcionReceta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Deliciosa ensalada fresca con pollo a la parrilla y aderezo césar" />
+
+            <!-- TIPOS DE DIETA -->
+            <TextView
+                android:id="@+id/tvTiposDieta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="12sp"
+                android:textColor="#00BCD4"
+                android:textStyle="italic"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="Keto, Proteína Alta" />
+
+            <!-- INFORMACIÓN NUTRICIONAL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <!-- CALORÍAS -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginEnd="16dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_calories"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="Calorías" />
+
+                    <TextView
+                        android:id="@+id/tvCaloriasReceta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="#666666"
+                        tools:text="350 kcal" />
+
+                </LinearLayout>
+
+                <!-- TIEMPO DE PREPARACIÓN -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_time"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="Tiempo" />
+
+                    <TextView
+                        android:id="@+id/tvTiempoPreparacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="#666666"
+                        tools:text="25 min" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

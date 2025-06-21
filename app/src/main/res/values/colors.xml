@@ -7,4 +7,24 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Colores para switches -->
+    <color name="switch_track_on">#00BCD4</color>
+    <color name="switch_track_off">#CCCCCC</color>
+    
+    <!-- Colores para el plan de comidas -->
+    <color name="gray_text">#999999</color>
+    
+    <!-- Colores para el progreso -->
+    <color name="primary_blue">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="light_blue_background">#E3F2FD</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="orange_primary">#FF8A65</color>
+    <color name="gray_light">#E0E0E0</color>
+
+    <color name="blue_200">#FFBBDEFB</color>
+    <color name="blue_500">#FF2196F3</color>
+    <color name="beige">#F5E0C3</color>
+    <color name="gris_claro">#EFEFEF</color>
 </resources>

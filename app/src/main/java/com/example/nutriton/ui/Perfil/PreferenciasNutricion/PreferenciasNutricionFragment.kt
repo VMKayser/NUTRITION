@@ -6,7 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.nutriton.R
+import com.example.nutriton.data.repository.NutritionRepository
+import com.example.nutriton.ui.Preferencias.PreferenciasViewModel
+import com.example.nutriton.ui.Preferencias.PreferenciasViewModelFactory
 
 class PreferenciasNutricionFragment : Fragment() {
     
@@ -18,6 +22,12 @@ class PreferenciasNutricionFragment : Fragment() {
     private lateinit var etAlergias: EditText
     private lateinit var etAlimentosFavoritos: EditText
     private lateinit var btnGuardarPreferencias: Button
+
+    private val viewModel: PreferenciasViewModel by viewModels {
+        PreferenciasViewModelFactory(
+            NutritionRepository.getInstance(requireContext())
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,11 +43,49 @@ class PreferenciasNutricionFragment : Fragment() {
         // Inicializar referencias a las vistas
         initViews(view)
         
+        // Setup observers
+        setupObservers()
+        
         // Configurar el spinner de plan de dieta
         setupPlanDietaSpinner()
         
         // Configurar el botón de guardar
         setupGuardarButton()
+    }
+
+    private fun setupObservers() {
+        // Observar tipos de dieta para el spinner
+        viewModel.tiposDieta.observe(viewLifecycleOwner) { tiposDieta ->
+            val adapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                tiposDieta.map { it.nombre }
+            )
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerPlanDieta.adapter = adapter
+        }
+
+        // Observar preferencias actuales
+        viewModel.preferencias.observe(viewLifecycleOwner) { preferencias ->
+            etProteinas.setText(preferencias.porcentaje_proteinas.toString())
+            etCarbohidratos.setText(preferencias.porcentaje_carbohidratos.toString())
+            etGrasas.setText(preferencias.porcentaje_grasas.toString())
+        }
+
+        // Observar mensajes
+        viewModel.errorMessage.observe(viewLifecycleOwner) { message ->
+            if (message.isNotEmpty()) {
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+                viewModel.limpiarMensajes()
+            }
+        }
+
+        viewModel.successMessage.observe(viewLifecycleOwner) { message ->
+            if (message.isNotEmpty()) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                viewModel.limpiarMensajes()
+            }
+        }
     }
 
     private fun initViews(view: View) {
@@ -48,44 +96,52 @@ class PreferenciasNutricionFragment : Fragment() {
         etAlergias = view.findViewById(R.id.et_alergias)
         etAlimentosFavoritos = view.findViewById(R.id.et_alimentos_favoritos)
         btnGuardarPreferencias = view.findViewById(R.id.btn_guardar_preferencias)
-    }
+    }    private fun setupPlanDietaSpinner() {
+        // Ya se maneja en setupObservers()
+        spinnerPlanDieta.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                viewModel.tiposDieta.value?.let { tiposDieta ->
+                    if (position < tiposDieta.size) {
+                        val tipoDietaSeleccionado = tiposDieta[position]
+                        viewModel.actualizarTipoDieta(tipoDietaSeleccionado.id.toInt())
+                    }
+                }
+            }
 
-    private fun setupPlanDietaSpinner() {
-        // Opciones para el spinner de plan de dieta
-        val planesDieta = arrayOf(
-            "Seleccionar plan de dieta",
-            "Dieta Equilibrada",
-            "Dieta Mediterránea", 
-            "Dieta Vegana",
-            "Dieta Vegetariana",
-            "Dieta Keto",
-            "Dieta Paleo",
-            "Dieta sin Gluten"
-        )
-        
-        val adapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_item,
-            planesDieta
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerPlanDieta.adapter = adapter
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
     }
 
     private fun setupGuardarButton() {
         btnGuardarPreferencias.setOnClickListener {
             // Obtener los datos de los campos
-            val planDietaSeleccionado = spinnerPlanDieta.selectedItem.toString()
-            val proteinas = etProteinas.text.toString()
-            val carbohidratos = etCarbohidratos.text.toString()
-            val grasas = etGrasas.text.toString()
+            val proteinasText = etProteinas.text.toString()
+            val carbohidratosText = etCarbohidratos.text.toString()
+            val grasasText = etGrasas.text.toString()
+            
+            // Validar y convertir a números
+            val proteinas = proteinasText.toIntOrNull() ?: 25
+            val carbohidratos = carbohidratosText.toIntOrNull() ?: 50
+            val grasas = grasasText.toIntOrNull() ?: 25
+            
+            // Validar que sumen 100%
+            if (proteinas + carbohidratos + grasas != 100) {
+                Toast.makeText(context, "Los porcentajes deben sumar 100%", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            
+            // Actualizar macronutrientes
+            viewModel.actualizarMacronutrientes(proteinas, carbohidratos, grasas)
+            
+            // Guardar todas las preferencias
+            viewModel.guardarPreferencias()
+            
+            // TODO: Procesar alergias y alimentos favoritos en el futuro
             val alergias = etAlergias.text.toString()
             val alimentosFavoritos = etAlimentosFavoritos.text.toString()
             
-            // TODO: Aquí se enviará la información al backend
             // Log de los datos para desarrollo (remover en producción)
             println("=== PREFERENCIAS DE NUTRICIÓN ===")
-            println("Plan de Dieta: $planDietaSeleccionado")
             println("Proteínas: $proteinas%")
             println("Carbohidratos: $carbohidratos%") 
             println("Grasas: $grasas%")

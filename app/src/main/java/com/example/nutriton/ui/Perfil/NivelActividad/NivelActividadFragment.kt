@@ -6,12 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.nutriton.R
+import com.example.nutriton.data.repository.NutritionRepository
+import com.example.nutriton.ui.Preferencias.PreferenciasViewModel
+import com.example.nutriton.ui.Preferencias.PreferenciasViewModelFactory
 
 class NivelActividadFragment : Fragment() {
     
     private var nivelSeleccionado: String = "Moderado" // Por defecto
+
+    private val viewModel: PreferenciasViewModel by viewModels {
+        PreferenciasViewModelFactory(
+            NutritionRepository.getInstance(requireContext())
+        )
+    }
     
     override fun onCreateView(
         inflater: LayoutInflater, 
@@ -24,6 +35,34 @@ class NivelActividadFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
+        setupObservers()
+        setupViews(view)
+    }
+
+    private fun setupObservers() {
+        // Observar mensajes
+        viewModel.errorMessage.observe(viewLifecycleOwner) { message ->
+            if (message.isNotEmpty()) {
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+                viewModel.limpiarMensajes()
+            }
+        }
+
+        viewModel.successMessage.observe(viewLifecycleOwner) { message ->
+            if (message.isNotEmpty()) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                viewModel.limpiarMensajes()
+            }
+        }
+
+        // Observar preferencias para establecer el nivel actual
+        viewModel.preferencias.observe(viewLifecycleOwner) { preferencias ->
+            nivelSeleccionado = preferencias.nivel_actividad
+            updateSelectedLevel()
+        }
+    }
+
+    private fun setupViews(view: View) {
         // Referencias a los layouts
         val layoutSedentario = view.findViewById<LinearLayout>(R.id.layout_sedentario)
         val layoutModerado = view.findViewById<LinearLayout>(R.id.layout_moderado)
@@ -62,17 +101,44 @@ class NivelActividadFragment : Fragment() {
         
         layoutMuyActivo.setOnClickListener { 
             actualizarSeleccion(layoutMuyActivo, "Muy Activo") 
-        }
-          // Botón guardar
+        }          // Botón guardar
         btnGuardar.setOnClickListener {
-            // TODO: Aquí se guardará el nivel en el backend
+            // Actualizar el nivel en el ViewModel
+            viewModel.actualizarNivelActividad(nivelSeleccionado)
+            viewModel.guardarPreferencias()
+            
             // Log para desarrollo (remover en producción)
             println("=== NIVEL DE ACTIVIDAD SELECCIONADO ===")
             println("Nivel: $nivelSeleccionado")
             println("====================================")
+        }
+    }
+
+    private fun updateSelectedLevel() {
+        // Actualizar la UI según el nivel seleccionado desde preferencias
+        view?.let { v ->
+            val layoutSedentario = v.findViewById<LinearLayout>(R.id.layout_sedentario)
+            val layoutModerado = v.findViewById<LinearLayout>(R.id.layout_moderado)
+            val layoutActivo = v.findViewById<LinearLayout>(R.id.layout_activo)
+            val layoutMuyActivo = v.findViewById<LinearLayout>(R.id.layout_muy_activo)
             
-            // TODO: Implementar navegación cuando esté lista
-            // findNavController().popBackStack()
+            val todosLosLayouts = listOf(layoutSedentario, layoutModerado, layoutActivo, layoutMuyActivo)
+            
+            // Quitar selección de todos
+            todosLosLayouts.forEach { layout ->
+                layout.setBackgroundResource(R.drawable.nivel_actividad_normal)
+            }
+            
+            // Seleccionar el nivel actual
+            val layoutSeleccionado = when (nivelSeleccionado) {
+                "Sedentario" -> layoutSedentario
+                "Moderado" -> layoutModerado
+                "Activo" -> layoutActivo
+                "Muy Activo" -> layoutMuyActivo
+                else -> layoutModerado
+            }
+            
+            layoutSeleccionado.setBackgroundResource(R.drawable.nivel_actividad_seleccionado)
         }
     }
 }

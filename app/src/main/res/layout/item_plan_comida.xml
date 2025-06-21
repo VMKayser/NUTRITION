@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Imagen de fondo -->
+        <ImageView
+            android:id="@+id/iv_plan_imagen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            android:contentDescription="Imagen del plan de comida" />
+
+        <!-- Overlay oscuro -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#50000000" />
+
+        <!-- Contenido superpuesto -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <!-- Título del plan -->
+            <TextView
+                android:id="@+id/tv_plan_nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EQUILIBRADA"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:layout_marginBottom="8dp"
+                tools:text="EQUILIBRADA" />
+
+            <!-- Descripción corta -->
+            <TextView
+                android:id="@+id/tv_plan_descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Incluye alimentos de todos los grupos"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_marginBottom="8dp"
+                tools:text="Incluye alimentos de todos los grupos en proporciones balanceadas" />
+
+            <!-- Badge con número de recetas -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="#4CAF50"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/tv_total_recetas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6 recetas"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    tools:text="6 recetas" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

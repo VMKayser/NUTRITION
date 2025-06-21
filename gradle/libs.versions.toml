@@ -12,7 +12,12 @@ lifecycleLivedataKtx = "2.9.0"
 lifecycleViewmodelKtx = "2.9.0"
 navigationFragmentKtx = "2.9.0"
 navigationUiKtx = "2.9.0"
-
+charts = "0.2.4-alpha"
+foundationLayout = "1.6.7"
+runtime = "1.6.7"
+ui = "1.6.7"
+composeCompiler = "1.6.7"
+material3 = "1.2.1"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -25,8 +30,16 @@ androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecy
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundationLayout" }
+androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
+androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
+androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
+androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "ui" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "ui" }
+charts = { module = "com.github.tehras:charts", version.ref = "charts" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

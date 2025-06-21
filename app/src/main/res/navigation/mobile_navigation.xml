@@ -3,19 +3,108 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_inicio">
-
-    <fragment
+    app:startDestination="@+id/navigation_inicio">    <fragment
         android:id="@+id/navigation_inicio"
         android:name="com.example.nutriton.ui.inicio.InicioFragment"
         android:label="@string/title_inicio"
-        tools:layout="@layout/fragment_inicio" />
+        tools:layout="@layout/fragment_inicio">
+        
+        <!-- Navegación al detalle de receta desde inicio -->
+        <action
+            android:id="@+id/action_inicio_to_detallereceta"
+            app:destination="@id/navigation_DetalleReceta"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_PlanComidas"
         android:name="com.example.nutriton.ui.PlanComidas.PlanComidasFragment"
         android:label="@string/title_PlanComidas"
-        tools:layout="@layout/fragment_plancomidas" />
+        tools:layout="@layout/fragment_plancomidas">
+        
+        <!-- Navegación al detalle del plan -->
+        <action
+            android:id="@+id/action_plancomidas_to_detalleplan"
+            app:destination="@id/navigation_DetallePlanComidas"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Fragment para mostrar el detalle de un plan de comidas -->
+    <fragment
+        android:id="@+id/navigation_DetallePlanComidas"
+        android:name="com.example.nutriton.ui.PlanComidas.DetallePlanComidasFragment"
+        android:label="Detalle del Plan"
+        tools:layout="@layout/fragment_detalle_plan_comidas">
+        
+        <!-- Argumentos que recibe -->
+        <argument
+            android:name="planId"
+            app:argType="string" />
+        <argument
+            android:name="planNombre"
+            app:argType="string" />
+        <argument
+            android:name="planDescripcion"
+            app:argType="string" />
+        <argument
+            android:name="planImagenUrl"
+            app:argType="string"
+            app:nullable="true" />
+            
+        <!-- Navegación al detalle de receta -->
+        <action
+            android:id="@+id/action_detalleplan_to_detallereceta"
+            app:destination="@id/navigation_DetalleReceta"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Fragment para mostrar el detalle de una receta -->
+    <fragment
+        android:id="@+id/navigation_DetalleReceta"
+        android:name="com.example.nutriton.ui.PlanComidas.DetalleRecetaFragment"
+        android:label="Detalle de Receta"
+        tools:layout="@layout/fragment_detallesreceta">
+        
+        <!-- Argumentos que recibe -->
+        <argument
+            android:name="recetaId"
+            app:argType="integer" />
+    </fragment>
+
+    <!-- Fragment para mostrar recetas por plan -->
+    <fragment
+        android:id="@+id/navigation_RecetasPorPlan"
+        android:name="com.example.nutriton.ui.PlanComidas.RecetasPorPlanFragment"
+        android:label="Recetas del Plan"
+        tools:layout="@layout/fragment_recetas_plan">
+
+        <!-- Argumentos que recibe -->
+        <argument
+            android:name="tipoDietaNombre"
+            app:argType="string" />
+        <argument
+            android:name="planNombre"
+            app:argType="string"
+            app:nullable="true" />
+
+        <!-- Navegación al detalle de receta -->
+        <action
+            android:id="@+id/action_recetasPorPlan_to_detalleReceta"
+            app:destination="@id/navigation_DetalleReceta"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_Progreso"
@@ -53,8 +142,7 @@
         android:name="com.example.nutriton.ui.Perfil.NivelActividad.NivelActividadFragment"
         android:label="Nivel de Actividad"
         tools:layout="@layout/fragment_nivelactividad" />
-        
-    <fragment
+          <fragment
         android:id="@+id/preferenciasNutricionFragment"
         android:name="com.example.nutriton.ui.Perfil.PreferenciasNutricion.PreferenciasNutricionFragment"
         android:label="Preferencias de Nutrición"
